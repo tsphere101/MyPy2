@@ -1,10 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
+TOKEN = ''
+with open('token.txt','r') as file:
+    TOKEN = file.read()
 
 def _lineNotify(payload, file=None):
     url = 'https://notify-api.line.me/api/notify'
-    token = 'token'
+    token = TOKEN
     headers = {'Authorization': 'Bearer '+token}
     return requests.post(url, headers=headers, data=payload, files=file)
 
